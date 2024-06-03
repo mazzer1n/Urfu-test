@@ -1,12 +1,18 @@
 package ru.malyarov.maxim.program.model;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import ru.malyarov.maxim.data.EducationLevel;
 import ru.malyarov.maxim.data.EducationStandard;
 import ru.malyarov.maxim.institute.model.Institute;
 import ru.malyarov.maxim.person.model.Person;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.UUID;
 
 @Builder
@@ -26,6 +32,7 @@ public class Program {
     @Column(name = "title")
     private String title;
 
+    //Шифр формата 09.04.03-33.03, иначе он портит эндпоинт
     @Column(name = "cypher")
     private String cypher;
 
@@ -36,13 +43,14 @@ public class Program {
     private EducationStandard standard;
 
     @ManyToOne
-    @JoinColumn(name = "institute_id", referencedColumnName = "id")
     private Institute institute;
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person head;
 
-    // accreditationTime дата следующей аккредитации 2025-03-14
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd") //2025-03-14
+    private Date accreditationTime;
 
 }

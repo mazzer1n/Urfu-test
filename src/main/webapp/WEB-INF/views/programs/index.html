@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Programs</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>All Programs</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="program : ${programs}">
+    <td><a th:href="@{/programs/{cypher}(cypher=${program.cypher})}" th:text="${program.title}">View</a></td>
+  </tr>
+  </tbody>
+</table>
+<a href="programs/new">Add Program</a>
+</body>
+</html>
+
+
+

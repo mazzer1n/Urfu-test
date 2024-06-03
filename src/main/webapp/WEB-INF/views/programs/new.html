@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Program</title>
+</head>
+<body>
+<h1>Add Program</h1>
+<form th:method="POST" th:action="@{/programs/new}" th:object="${programDto}">
+    <label>Title:</label>
+    <input type="text" th:field="*{title}"/>
+    <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error Message</div>
+    <br/>
+    <label>Cypher (format 00.00.00-00.00):</label>
+    <input type="text" th:field="*{cypher}"/>
+    <div style="color:red" th:if="${#fields.hasErrors('cypher')}" th:errors="*{cypher}">Error Message</div>
+    <br/>
+    <label for="level">Education Level:</label>
+    <select id="level" name="level">
+        <option value="">Select Education Level</option>
+        <option value="BACHELOR">Bachelor</option>
+        <option value="APPLIED_BACHELOR">Applied Bachelor</option>
+        <option value="SPECIALIST">Specialist</option>
+        <option value="MASTER">Master</option>
+        <option value="POSTGRADUATE">Postgraduate</option>
+    </select>
+    <div style="color:red" th:if="${#fields.hasErrors('level')}" th:errors="*{level}">Error Message</div>
+    <br/>
+    <label for="standard">Education Standard:</label>
+    <select id="standard" name="standard">
+        <option value="">Select Education Standard</option>
+        <option value="SUOS">SUOS</option>
+        <option value="SUT">SUT</option>
+        <option value="FSES_HE">FSES HE</option>
+        <option value="FSES_VPO">FSES VPO</option>
+        <option value="FSES_3_PLUS_PLUS">FSES 3++</option>
+    </select>
+    <div style="color:red" th:if="${#fields.hasErrors('standard')}" th:errors="*{standard}">Error Message</div>
+    <br/>
+    <label>Institute Name:</label>
+    <input type="text" th:field="*{instituteName}"/>
+    <div style="color:red" th:if="${#fields.hasErrors('instituteName')}" th:errors="*{instituteName}">Error Message
+    </div>
+    <br/>
+    <label>Head Name:</label>
+    <input type="text" th:field="*{headName}"/>
+    <div style="color:red" th:if="${#fields.hasErrors('headName')}" th:errors="*{headName}">Error Message</div>
+    <br/>
+    <label>Accreditation Time (format yyyy-MM-dd):</label>
+    <input type="text" th:field="*{accreditationTime}"/>
+    <div style="color:red" th:if="${#fields.hasErrors('accreditationTime')}" th:errors="*{accreditationTime}">Error
+        Message
+    </div>
+    <br/>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Program Details</title>
+</head>
+<body>
+
+<h1>Program Details</h1>
+
+<div>
+  <h2>Title: <span th:text="${program.title}"></span></h2>
+  <p>Cypher: <span th:text="${program.cypher}"></span></p>
+  <p>Level: <span th:text="${program.level}"></span></p>
+  <p>Standard: <span th:text="${program.standard}"></span></p>
+  <p>Institute: <span th:text="${program.instituteName}"></span></p>
+  <p>Head: <span th:text="${program.headName}"></span></p>
+  <p>Accreditation Time: <span th:text="${program.accreditationTime}"></span></p>
+
+  <a th:href="@{/programs/edit/{cypher}(cypher=${program.cypher})}">Edit</a>
+
+  <form th:method="DELETE" th:action="@{/programs/{cypher}(cypher=${program.cypher})}">
+    <input type="submit" value="Delete"/>
+  </form>
+</div>
+
+</body>
+</html>

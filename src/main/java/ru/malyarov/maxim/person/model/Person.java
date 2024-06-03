@@ -1,6 +1,6 @@
 package ru.malyarov.maxim.person.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
 import ru.malyarov.maxim.program.model.Program;
@@ -19,9 +19,10 @@ public class Person {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private UUID id;
 
-    private String fullname;
+    private String fullName;
 
     @OneToMany(mappedBy = "head")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)

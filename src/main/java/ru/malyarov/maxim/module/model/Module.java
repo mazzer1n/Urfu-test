@@ -1,9 +1,9 @@
 package ru.malyarov.maxim.module.model;
 
-import jakarta.persistence.*;
 import lombok.*;
 import ru.malyarov.maxim.data.EducationStandard;
 
+import javax.persistence.*;
 import java.util.UUID;
 
 @Builder
@@ -17,6 +17,7 @@ public class Module {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private UUID id;
 
     private String title;
