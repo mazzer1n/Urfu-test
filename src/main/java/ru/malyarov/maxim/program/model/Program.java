@@ -5,14 +5,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import ru.malyarov.maxim.data.EducationLevel;
 import ru.malyarov.maxim.data.EducationStandard;
 import ru.malyarov.maxim.institute.model.Institute;
+import ru.malyarov.maxim.module.model.Module;
 import ru.malyarov.maxim.person.model.Person;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -52,5 +50,12 @@ public class Program {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd") //2025-03-14
     private Date accreditationTime;
+
+    @ManyToMany
+    @JoinTable(name = "ProgramModuleLink",
+            joinColumns = @JoinColumn(name = "program_id"),
+            inverseJoinColumns = @JoinColumn(name = "module_id"))
+    private List<Module> modules;
+
 
 }

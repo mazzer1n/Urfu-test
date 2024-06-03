@@ -2,8 +2,10 @@ package ru.malyarov.maxim.module.model;
 
 import lombok.*;
 import ru.malyarov.maxim.data.EducationStandard;
+import ru.malyarov.maxim.program.model.Program;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Builder
@@ -12,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "module")
+@Table(name = "Module")
 public class Module {
 
     @Id
@@ -22,6 +24,10 @@ public class Module {
 
     private String title;
 
-    @Enumerated(EnumType.STRING)
-    private EducationStandard standard;
+
+    private String type;
+
+    @ManyToMany(mappedBy = "modules")
+    private List<Program> programs;
+
 }
