@@ -84,4 +84,10 @@ public class ProgramsController {
         log.info("Program deleted successfully");
         return "redirect:/programs";
     }
+
+    @GetMapping
+    public String linkModule() {
+        return null;
+        //TODO
+    }
 }

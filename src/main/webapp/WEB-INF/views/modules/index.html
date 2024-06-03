@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Programs</title>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
-
+<h1>All Modules</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="module : ${modules}">
+        <td><a th:href="@{/modules/{title}(title=${module.title})}" th:text="${module.title}">View</a></td>
+    </tr>
+    </tbody>
+</table>
+<a href="modules/new">Add Module</a>
 </body>
 </html>

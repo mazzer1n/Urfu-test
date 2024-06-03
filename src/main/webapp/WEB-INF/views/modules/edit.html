@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Module</title>
 </head>
 <body>
-
+<h2>Edit Module</h2>
+<form th:action="@{/modules/{title}(title=${module.title})}" th:object="${module}" th:method="PATCH">
+    <p>Title: <span th:text="${module.title}"></span></p>
+    <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Type Error</div>
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type" th:field="*{type}" required>
+    <br>
+    <button type="submit">Update Module</button>
+</form>
+<div th:if="${errorMessage}" th:text="${errorMessage}"></div>
+<a th:href="@{/modules}">Back to List</a>
+<form th:method="DELETE" th:action="@{/modules/{title}(title=${module.title})}">
+    <input type="submit" value="Delete"/>
+</form>
 </body>
 </html>

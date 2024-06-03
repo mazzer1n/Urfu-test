@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Show Module</title>
 </head>
 <body>
-
+<h2>Module Details</h2>
+<p>Title: <span th:text="${module.title}"></span></p>
+<p>Type: <span th:text="${module.type}"></span></p>
+<p>Programs:</p>
+<ul>
+    <li th:each="program : ${module.programs}">
+        <a th:href="@{/programs/{cypher}(cypher=${program.cypher})}" th:text="${program.title}">Program Title</a>
+    </li>
+</ul>
+<a th:href="@{/modules/edit/{title}(title=${module.title})}">Edit</a>
+<a th:href="@{/modules}">Back to List</a>
 </body>
 </html>

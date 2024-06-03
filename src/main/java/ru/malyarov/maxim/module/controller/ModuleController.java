@@ -44,7 +44,7 @@ public class ModuleController {
         if (bindingResult.hasErrors())
             return "modules/new";
 
-        moduleService.save(moduleDto);
+        moduleService.saveNewModule(moduleDto);
         log.info("Module added successfully");
         return "redirect:/modules";
     }
@@ -70,8 +70,7 @@ public class ModuleController {
         log.info("Updating module with id: {}", title);
         if (bindingResult.hasErrors())
             return "modules/edit";
-        String mod = moduleService.replaceSpacesInString(title);
-        moduleService.update(mod, module);
+        moduleService.update(title, module);
         log.info("Module updated successfully");
         return "redirect:/modules";
     }
@@ -83,4 +82,5 @@ public class ModuleController {
         log.info("Module deleted successfully");
         return "redirect:/modules";
     }
+
 }

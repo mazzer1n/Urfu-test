@@ -8,6 +8,10 @@ import java.util.UUID;
 
 @Repository
 public interface ModuleRepository extends JpaRepository<Module, UUID> {
+    Module findByTitle(String title);
+
+    void deleteByTitle(String title);
+
 
 
 }

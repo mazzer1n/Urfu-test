@@ -4,12 +4,14 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import ru.malyarov.maxim.data.EducationLevel;
 import ru.malyarov.maxim.data.EducationStandard;
+import ru.malyarov.maxim.module.model.Module;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -41,4 +43,6 @@ public class ProgramDto {
     @NotNull(message = "Accreditation Time should not be empty")
     @DateTimeFormat(pattern = "yyyy-MM-dd") //2025-03-14
     private Date accreditationTime;
+
+    private List<Module> modules;
 }

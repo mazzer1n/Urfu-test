@@ -1,7 +1,6 @@
 package ru.malyarov.maxim.person.model.dto;
 
 import lombok.*;
-import ru.malyarov.maxim.program.model.Program;
 import ru.malyarov.maxim.program.model.dto.ProgramDto;
 
 import java.util.List;

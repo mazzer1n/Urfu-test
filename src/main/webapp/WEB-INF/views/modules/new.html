@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>New Module</title>
+    <script>
+        function replaceSpaces(input) {
+            input.value = input.value.replace(/ /g, '-');
+        }
+    </script>
 </head>
 <body>
-
+<h2>Add New Module</h2>
+<form th:method="POST" th:action="@{/modules/new}" th:object="${moduleDto}">
+    <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</div>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" th:field="*{title}" oninput="replaceSpaces(this)" required>
+    <br>
+    <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Type Error</div>
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type" th:field="*{type}" required>
+    <br>
+    <button type="submit">Add Module</button>
+</form>
+<div th:if="${errorMessage}" th:text="${errorMessage}"></div>
+<a th:href="@{/modules}">Back to List</a>
 </body>
 </html>
