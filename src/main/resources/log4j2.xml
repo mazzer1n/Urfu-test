@@ -6,6 +6,7 @@
         </Console>
     </Appenders>
     <Loggers>
+
         <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>
@@ -21,6 +22,7 @@
         <Logger name="org.springframework" level="warn" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
+
     </Loggers>
 </Configuration>
 

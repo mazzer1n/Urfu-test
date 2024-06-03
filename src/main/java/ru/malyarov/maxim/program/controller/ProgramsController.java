@@ -60,6 +60,7 @@ public class ProgramsController {
 
     @GetMapping("/edit/{cypher}")
     public String edit(Model model, @PathVariable("cypher") String cypher) {
+        log.info("Editing program with cypher: {}", cypher);
         model.addAttribute("program", programService.findByCypher(cypher));
         return "programs/edit";
     }
